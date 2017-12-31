@@ -1,0 +1,131 @@
+  <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+
+	<head>
+    <title>random word generator</title>
+	</head>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i" rel="stylesheet">
+
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<style>
+body {
+	margin: 0;
+	font-family: "Roboto Mono", sans-serif;
+}
+	
+	#thecanvas {
+		height: 100vh;	
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow-x: hidden;	
+	}
+	
+#intromsg {
+	margin-top: 50px;
+	cursor: pointer;	
+	
+	font-weight: normal !important;
+	}	
+		
+}	
+
+::-moz-selection { /* Code for Firefox */
+    background: transparent;
+}
+
+::selection {
+    background: transparent;
+}
+	
+
+</style>
+
+<div id="thecanvas"></div>
+
+<script>
+	
+	// Some Styling
+$('#thecanvas').html('<h1 id="intromsg"></h1><a href="http://www.google.com" target="_blank" id="googlelink">ask Google</button>');
+$('#thecanvas').css("background-color","#111111");
+$('#intromsg').css("color", "#eeeeee");
+$('#intromsg').css("font-size", "calc(60px + 12vw)");
+
+$('#intromsg').addClass("mineral");
+
+var syllables = ["Ab", "Ac", "Ad", "Af", "Ag", "Ah", "Aj", "Ak", "Al", "Am", "An", "Ap", "Aq", "Ar", "As", "At", "Av", "Aw", "Ax", "Az", "Eb", "Ec", "Ed", "Ef", "Eg", "Eh", "Ej", "Ek", "El", "Em", "En", "Ep", "Eq", "Er", "Es", "Et", "Ev", "Ew", "Ex", "Ez", "Ib", "Ic", "Id", "If", "Ig", "Ih", "Ij", "Ik", "Il", "Im", "In", "Ip", "Iq", "Ir", "Is", "It", "Iv", "Iw", "Ix", "Iz", "Ob", "Oc", "Od", "Of", "Og", "Oh", "Oj", "Ok", "Ol", "Om", "On", "Op", "Oq", "Or", "Os", "Ot", "Ov", "Ow", "Ox", "Oz", "Ub", "Uc", "Ud", "Uf", "Ug", "Uh", "Uj", "Uk", "Ul", "Um", "Un", "Up", "Uq", "Ur", "Us", "Ut", "Uv", "Uw", "Ux", "Uz"
+];
+
+var syllables2=["ba", "ca", "da", "fa", "ga", "ha", "ja", "ka", "la", "ma", "na", "pa", "qa", "ra", "sa", "ta", "va", "wa", "xa", "za", "be", "ce", "de", "fe", "ge", "he", "je", "ke", "le", "me", "ne", "pe", "qe", "re", "se", "te", "ve", "we", "xe", "ze", "bi", "ci", "di", "fi", "gi", "hi", "ji", "ki", "li", "mi", "ni", "pi", "qi", "ri", "si", "ti", "vi", "wi", "xi", "zi", "bo", "co", "do", "fo", "go", "ho", "jo", "ko", "lo", "mo", "no", "po", "qo", "ro", "so", "to", "vo", "wo", "xo", "zo", "bu", "cu", "du", "fu", "gu", "hu", "ju", "ku", "lu", "mu", "nu", "pu", "qu", "ru", "su", "tu", "vu", "wu", "xu", "zu"
+];
+
+var word;
+
+var a = 0;
+
+var url = "http://googl.com/#q=";
+
+var link;
+
+
+function loadWord(){
+	if (a % 2 ==0){
+		$('#thecanvas').css("background-color","#111111");
+		$('#intromsg').css("color", "#eeeeee");	
+		$('#googlelink').css("color", "#eeeeee");		
+		$('#googlelink').css("border-color", "#eeeeee");					
+		word = 
+		syllables[Math.floor(Math.random() * syllables.length)]+
+		syllables[Math.floor(Math.random() * syllables.length)]+
+		syllables[Math.floor(Math.random() * syllables.length)];
+
+		var wordoutput = word.toLowerCase();
+
+		var link = url + wordoutput;		
+		
+		document.getElementById("googlelink").href = link;
+		
+		
+	} else {
+		$('#thecanvas').css("background-color","#eeeeee");
+		$('#intromsg').css("color", "#111111");
+		$('#googlelink').css("color", "#111111");		
+		$('#googlelink').css("border-color", "#111111");			
+		word = 
+		syllables2[Math.floor(Math.random() * syllables.length)]+
+		syllables2[Math.floor(Math.random() * syllables.length)]+
+		syllables2[Math.floor(Math.random() * syllables.length)];
+
+		var wordoutput = word.toUpperCase();
+		
+		var link = url + wordoutput;
+		
+		document.getElementById("googlelink").href = link;		
+		
+		}
+	$('#intromsg').html(wordoutput);
+	a++;
+}
+
+
+
+loadWord();
+
+
+// On mouseclick
+$( "#intromsg" ).click(function() {
+loadWord();
+});
+	
+</script>
+</body>
